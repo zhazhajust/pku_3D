@@ -9,11 +9,11 @@ import scipy.fftpack as fftpack
 from matplotlib.ticker import MultipleLocator, FuncFormatter
 from mpl_toolkits.mplot3d import Axes3D
 plt.switch_backend('agg')
-Thz1=1
-Thz2=100
+Thz1=0.1
+Thz2=10
 mi = 3e8/(Thz1*1e12)
 ma = 3e8/(Thz2*1e12)
-index = 100
+index = 1000
 '''
 ###
 time =  np.loadtxt(const.txtdir + 'a0.txt').argmax()   #sdf_locate
@@ -24,7 +24,7 @@ locate2 = (time*const.dt_snapshot - const.window_start_time)*3e8*1e6
 '''
 ###locate_um###
 locate = 28000e-6
-n_sdf = 10000
+n_sdf = 1000
 ###
 def draw(x):
 	#p "draw",x

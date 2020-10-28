@@ -11,8 +11,8 @@ import multiprocessing
 import constant as const
 plt.switch_backend('agg')
 ###
-limit_min=2e12
-limit_max=5.5e12
+limit_min=4e12
+limit_max=10e12
 
 ###
 locate=24000e-6
@@ -22,7 +22,7 @@ i1=const.start
 i2=const.stop+const.step
 
 ###
-freqs = 4e12
+freqs = 7e12
 savefigdir=const.figdir+str(freqs/1e12)+'Thz'+'_'+'a0.png'
 def y0_a0(x):
 	c=3e8

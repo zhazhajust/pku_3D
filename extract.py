@@ -70,7 +70,8 @@ if __name__ == "__main__":
   x_max   =  const.x_max      #80 * lamada   #60 * lamada    #micron
   x_min   =  0 * micron
   x_end   =  x_max - x_min
-  y       =  const.Ny/2 
+  y       =  int(const.Ny/2)
+  z       =  int(const.Ny/2)
   window_start_time =  (x_max - x_min) / c
   #start_move_number = window_start_time * 1e15      #fs
   start_move_number =  int(window_start_time / dt_snapshot)
@@ -96,11 +97,11 @@ if __name__ == "__main__":
 	#n = 5004
 	print "n",n
         #### header data ####
-        #data = sdf.read(dirsdf+str(n).zfill(dirsize)+".sdf",dict=True)
+        data = sdf.read(dirsdf+str(n).zfill(dirsize)+".sdf",dict=True)
         #header=data['Header']
         time=n*const.dt_snapshot#header['time']
-        E_y0=np.loadtxt("baktxt/"+const.data_name+str(n)+"Ey_y0.txt")
-	#data['Electric Field/Ey'].data[...,y]
+        #E_y0=np.loadtxt("baktxt/"+const.data_name+str(n)+"Ey_y0.txt")
+	E_y0=data['Electric Field/Ey'].data[:,y,z]
         if  n  <  start_move_number:
                      
            for x in range(1,int(gridnumber/x_interval)+1):

@@ -1,4 +1,5 @@
 # -- coding: utf-8 --
+import constant as const
 import math
 import sdf
 import matplotlib
@@ -32,8 +33,9 @@ def extract(n):
 	xt = np.ndarray(ss1, dtype=ss2, buffer=shm.buf)
 	data = sdf.read(dirsdf+str(n).zfill(dirsize)+".sdf",dict=True)
 	header=data['Header']
-	time=header['time']
-	E_y0=data['Electric Field/Ey'].data[:,int(y)]
+	time=n*const.dt_snapshot #header['time']
+	#E_y0=data['Electric Field/Ey'].data[:,int(y)]
+	E_y0=np.loadtxt("baktxt/"+const.data_name+str(n)+"Ey_y0.txt")
 	if  n  <  start_move_number:
 		for x in range(1,int(gridnumber/x_interval)+1):
 			a=int(x*x_interval)

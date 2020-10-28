@@ -16,7 +16,6 @@ limit_max=10e12
 i1=const.start
 i2=const.stop+const.step
 savefigdir=const.figdir+'Thz_'+'efficiency.png'
-dx=100
 def draw(x):
 	#p "draw",x
 	savefigdir=const.figdir+str(x)+'k_bz.png'
@@ -77,10 +76,14 @@ for i in range(int(a1),int(a2)):
                 index_n = i
                 #print 'eff,i',final_energe,i
 '''
-pool = multiprocessing.Pool(processes=4)
+#pool = multiprocessing.Pool(processes=4)
 #for i in range(start,stop+step,step):
 #       results.append(pool.apply_async(extract, (i, ))) 
-final_energe = pool.map(draw,range(int(i1-1),int(i2+dx),dx))
+#final_energe = pool.map(draw,range(int(i1),int(i2)))
+final_energe=[]
+for i in range(int(i1-1),int(i2-100),100):
+	final_energe.append(draw(i))
+
 #print(final_energe)
 #print('max_energe:'+final_energe.max())
 #final=draw(a)
@@ -101,7 +104,7 @@ print('distance:'+str(max_distance))
 print('eff:'+str(efficiency.max()))
 np.savetxt(const.txtdir + 'eff.txt',efficiency)
 
-time = np.arange(int(i1-1),int(i2+dx),dx)
+time = np.arange(int(i1-1),int(i2-100),100)
 locate = (time*const.dt_snapshot - const.window_start_time)*3e8*1e6
 
 
