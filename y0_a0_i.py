@@ -50,7 +50,7 @@ def y0_a0(x):
 	k_bz2[-k_n[0]:]=0    #k_bz.argmin()
 	bz_filter=np.fft.ifft(k_bz2)
 
-	E0_w0=bz_filter.real.max()
+	E0_w0=np.abs(bz_filter.real).max()
 	print('E0:'+str(E0_w0))
 	w0=freqs*2*3.1415926
 	a0_w0=e*E0_w0/(me*c*w0)
